@@ -1,4 +1,4 @@
-package rushour;
+package rushourDone;
 
 import java.awt.Color;
 

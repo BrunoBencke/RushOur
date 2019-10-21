@@ -1,7 +1,7 @@
 /**
  * 
  */
-package rushour;
+package rushourDone;
 
 import java.awt.Color;
 import java.awt.Font;
