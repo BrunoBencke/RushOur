@@ -1,6 +1,3 @@
-/**
- * 
- */
 package rushourDone;
 
 import java.awt.Color;
@@ -18,13 +15,9 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-/** 
- * @version 7/3/2017
- */
-public class MainFrame extends JFrame {
 
-	// Attributes.
-	private static final long serialVersionUID = 8804703186899321071L;
+public class MainFrame extends JFrame {
+    
 	private JPanel contentPane;
 	private JLabel[][] cells;
 	private JLabel letsPlay, rLabel, colsLabel, vLabel;
@@ -362,5 +355,13 @@ public class MainFrame extends JFrame {
 		return new GameObject(cells, size == 3 ? new Color(0,112,0) : Color.BLUE, or);
 		
 	}
+        
+        
+        public static void main(String[] args){
+		
+		new MainFrame(true, null).setVisible(true);
+		
+	}
+        
 	 
 }
