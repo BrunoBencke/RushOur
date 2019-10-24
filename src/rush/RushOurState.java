@@ -1,6 +1,6 @@
 package rush;
 
-public class MazeState
+public class RushOurState
 {
     private int[][] m = {{1, 1, 1, 1, 1, 1, 1, 1}, // labirinto zerado
                          {1, 3, 3, 0, 0, 0, 0, 1},
@@ -10,9 +10,9 @@ public class MazeState
                          {1, 1, 1, 1, 1, 1, 1, 1}};
     private int row = 2, col = 2; // posição inicial
     
-    public MazeState() {}
+    public RushOurState() {}
 
-    public MazeState(MazeState s) {
+    public RushOurState(RushOurState s) {
         for (int r=0; r<6; r++) {
             for (int c=0; c<8; c++) {
                 this.m[r][c] = s.m[r][c]; } } 

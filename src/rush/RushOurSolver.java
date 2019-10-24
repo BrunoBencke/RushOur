@@ -1,11 +1,11 @@
 package rush;
 
-public class MazeSolver
+public class RushOurSolver
 {
     // contador de estados gerados
     public static int count = 0;
     
-    public static boolean solve(MazeState state)
+    public static boolean solve(RushOurState state)
     {
         count++;
         System.out.println(state);
@@ -22,22 +22,22 @@ public class MazeSolver
         // baseado no estado parcial atual, gera novos estados
         if (state.get(r - 1, c) == 0 || state.get(r - 1, c) == 4) {
             // existe caminho não explorado ao norte
-            MazeState n = new MazeState(state); n.set(r, c, 3, 3); n.setRow(r - 1);
+            RushOurState n = new RushOurState(state); n.set(r, c, 3, 3); n.setRow(r - 1);
             if (solve(n) == true) { return true; }
         }
         if (state.get(r + 1, c) == 0 || state.get(r + 1, c) == 4) {
             // existe caminho não explorado ao sul 
-            MazeState s = new MazeState(state); s.set(r, c, 3, 3); s.setRow(r + 1);
+            RushOurState s = new RushOurState(state); s.set(r, c, 3, 3); s.setRow(r + 1);
             if (solve(s) == true) { return true; }
         }
         if (state.get(r, c - 1) == 0 || state.get(r, c - 1) == 4) {
             // existe caminho não explorado a oeste
-            MazeState o = new MazeState(state); o.set(r, c, 3, 3); o.setCol(c - 1);
+            RushOurState o = new RushOurState(state); o.set(r, c, 3, 3); o.setCol(c - 1);
             if (solve(o) == true) { return true; }
         }
         if (state.get(r, c + 1) == 0 || state.get(r, c + 1) == 4) {
             // existe caminho não explorado a leste
-            MazeState l = new MazeState(state); l.set(r, c, 3, 3); l.setCol(c + 1);
+            RushOurState l = new RushOurState(state); l.set(r, c, 3, 3); l.setCol(c + 1);
             if (solve(l) == true) { return true; }
         }
         
@@ -47,7 +47,7 @@ public class MazeSolver
     public static void main(String[] args)
     {
         long start = System.currentTimeMillis();
-        MazeState first = new MazeState();
+        RushOurState first = new RushOurState();
         solve(first);
         System.out.println("count: " + count);
         System.out.println("time : " + (System.currentTimeMillis()-start)/1000.0 + " s");
