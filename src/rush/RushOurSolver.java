@@ -2,11 +2,25 @@ package rush;
 
 public class RushOurSolver {
 
+    /*
+    Temos que mover o carro 3 apenas para cima e para baixo (norte e sul);
+    Temos que mover o carro 2 apenas para o lado esquerdo e direito (leste e oeste);
+    Apenas movimentar, se (if (espaço == 0)), se for vazio, ai ele anda, se nao, procura outro lugar (retrocede);
+    E se encontrar a saída if(espaço == 4) para o programa;
+     */
+    
     // contador de estados gerados
     public static int count = 0;
 
     public static boolean solve(RushOurState state) {
         count++;
+        System.out.println("LEGENDA");
+        System.out.println("4 = Saída");
+        System.out.println("3 = Veiculo");
+        System.out.println("2 = Veiculo");
+        System.out.println("1 = Parede");
+        System.out.println("0 = Vazio");
+        System.out.println("");
         System.out.println(state);
 
         // obtém posição atual

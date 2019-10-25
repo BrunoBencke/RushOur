@@ -2,12 +2,18 @@ package rush;
 
 public class RushOurState {
 
+    /*
+    Temos que mover o carro 3 apenas para cima e para baixo (norte e sul);
+    Temos que mover o carro 2 apenas para o lado esquerdo e direito (leste e oeste);
+    Apenas movimentar, se (if (espaço == 0)), se for vazio, ai ele anda, se nao, procura outro lugar (retrocede);
+    E se encontrar a saída if(espaço == 4) para o programa;
+     */
     private int[][] m = {
         {1, 1, 1, 1, 1, 1, 1, 1}, // labirinto zerado
         {1, 3, 3, 0, 0, 0, 0, 1},
         {1, 0, 0, 0, 0, 0, 0, 1},
         {1, 0, 0, 2, 2, 2, 2, 1},
-        {1, 0, 0, 0, 0, 0, 4, 1},
+        {1, 4, 0, 0, 0, 0, 0, 1},
         {1, 1, 1, 1, 1, 1, 1, 1}};
 
     private int row = 2, col = 2; // posição inicial
