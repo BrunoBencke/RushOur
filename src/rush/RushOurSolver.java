@@ -70,7 +70,7 @@ public class RushOurSolver {
         }
 
         if (state.get(linha, coluna) == 2) { //verifica se é carro 2, se for entra no outro if
-            if (state.get(linha, coluna + 1) == 0 || state.get(linha, coluna + 1) == 4 && state.get(linha - 1, coluna) != 1) { //verifica se tem espaço vazio ao oeste, se é saída e se não é parede
+            if (state.get(linha, coluna + 1) == 0 || state.get(linha, coluna + 1) == 4 && state.get(linha - 1, coluna) != 1) { //verifica se tem espaço vazio ao leste, se é saída e se não é parede
                 // existe caminho não explorado a leste
                 RushOurState leste = new RushOurState(state);
                 leste.set(linha, coluna, 3, 3);
