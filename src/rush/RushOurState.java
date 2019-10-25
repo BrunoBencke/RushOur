@@ -8,7 +8,7 @@ public class RushOurState {
     Apenas movimentar, se (if (espaço == 0)), se for vazio, ai ele anda, se nao, procura outro lugar (retrocede);
     E se encontrar a saída if(espaço == 4) para o programa;
      */
-    private int[][] m = {
+    private int[][] matriz = {
         {1, 1, 1, 1, 1, 1, 1, 1}, // labirinto zerado
         {1, 3, 3, 0, 0, 0, 0, 1},
         {1, 0, 0, 0, 0, 0, 0, 1},
@@ -16,51 +16,51 @@ public class RushOurState {
         {1, 4, 0, 0, 0, 0, 0, 1},
         {1, 1, 1, 1, 1, 1, 1, 1}};
 
-    private int row = 2, col = 2; // posição inicial
+    private int linha = 2, coluna = 2; // posição inicial
 
     public RushOurState() {
     }
 
-    public RushOurState(RushOurState s) {
-        for (int r = 0; r < 6; r++) {
-            for (int c = 0; c < 8; c++) {
-                this.m[r][c] = s.m[r][c];
+    public RushOurState(RushOurState state) {
+        for (int linha = 0; linha < 6; linha++) {
+            for (int coluna = 0; coluna < 8; coluna++) {
+                this.matriz[linha][coluna] = state.matriz[linha][coluna];
             }
         }
-        this.row = s.row;
-        this.col = s.col;
+        this.linha = state.linha;
+        this.coluna = state.coluna;
     }
 
-    public int get(int r, int c) {
-        return this.m[r][c];
+    public int get(int linha, int coluna) {
+        return this.matriz[linha][coluna];
     }
 
-    public int getRow() {
-        return this.row;
+    public int getLinha() {
+        return this.linha;
     }
 
-    public int getCol() {
-        return this.col;
+    public int getColuna() {
+        return this.coluna;
     }
 
-    public void set(int r, int c, int v1, int v2) {
-        this.m[r][c] = v1;
-        this.m[r + 1][c + 1] = v2;
+    public void set(int linha, int coluna, int v1, int v2) {
+        this.matriz[linha][coluna] = v1;
+        this.matriz[linha + 1][coluna + 1] = v2;
     }
 
-    public void setRow(int r) {
-        this.row = r;
+    public void setLinha(int linha) {
+        this.linha = linha;
     }
 
-    public void setCol(int c) {
-        this.col = c;
+    public void setColuna(int coluna) {
+        this.coluna = coluna;
     }
 
     public String toString() {
         String s = "";
-        for (int r = 0; r < 6; r++) {
-            for (int c = 0; c < 8; c++) {
-                s += this.m[r][c];
+        for (int linha = 0; linha < 6; linha++) {
+            for (int coluna = 0; coluna < 8; coluna++) {
+                s += this.matriz[linha][coluna];
             }
             s += '\n';
         }

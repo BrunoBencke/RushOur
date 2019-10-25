@@ -10,10 +10,10 @@ public class RushOurSolver {
      */
     
     // contador de estados gerados
-    public static int count = 0;
+    public static int contador = 0;
 
     public static boolean solve(RushOurState state) {
-        count++;
+        contador++;
         System.out.println("LEGENDA");
         System.out.println("4 = Saída");
         System.out.println("3 = Veiculo");
@@ -24,50 +24,50 @@ public class RushOurSolver {
         System.out.println(state);
 
         // obtém posição atual
-        int r = state.getRow();
-        int c = state.getCol();
+        int linha = state.getLinha();
+        int coluna = state.getColuna();
 
-        if (state.get(r, c) == 4) { // saída encontrada
-            System.out.println("EXIT FOUND!");
+        if (state.get(linha, coluna) == 4) { // saída encontrada
+            System.out.println("SAÍDA ENCONTRADA!");
             return true;
         }
         // baseado no estado parcial atual, gera novos estados
-        if (state.get(r - 1, c) == 0 || state.get(r - 1, c) == 4) {
+        if (state.get(linha - 1, coluna) == 0 || state.get(linha - 1, coluna) == 4) {
             // existe caminho não explorado ao norte
-            RushOurState n = new RushOurState(state);
-            n.set(r, c, 3, 3);
-            n.setRow(r - 1);
-            if (solve(n) == true) {
+            RushOurState norte = new RushOurState(state);
+            norte.set(linha, coluna, 3, 3);
+            norte.setLinha(linha - 1);
+            if (solve(norte) == true) {
                 return true;
             }
         }
 
-        if (state.get(r + 1, c) == 0 || state.get(r + 1, c) == 4) {
+        if (state.get(linha + 1, coluna) == 0 || state.get(linha + 1, coluna) == 4) {
             // existe caminho não explorado ao sul 
-            RushOurState s = new RushOurState(state);
-            s.set(r, c, 3, 3);
-            s.setRow(r + 1);
-            if (solve(s) == true) {
+            RushOurState sul = new RushOurState(state);
+            sul.set(linha, coluna, 3, 3);
+            sul.setLinha(linha + 1);
+            if (solve(sul) == true) {
                 return true;
             }
         }
 
-        if (state.get(r, c - 1) == 0 || state.get(r, c - 1) == 4) {
+        if (state.get(linha, coluna - 1) == 0 || state.get(linha, coluna - 1) == 4) {
             // existe caminho não explorado a oeste
-            RushOurState o = new RushOurState(state);
-            o.set(r, c, 3, 3);
-            o.setCol(c - 1);
-            if (solve(o) == true) {
+            RushOurState oeste = new RushOurState(state);
+            oeste.set(linha, coluna, 3, 3);
+            oeste.setColuna(coluna - 1);
+            if (solve(oeste) == true) {
                 return true;
             }
         }
 
-        if (state.get(r, c + 1) == 0 || state.get(r, c + 1) == 4) {
+        if (state.get(linha, coluna + 1) == 0 || state.get(linha, coluna + 1) == 4) {
             // existe caminho não explorado a leste
-            RushOurState l = new RushOurState(state);
-            l.set(r, c, 3, 3);
-            l.setCol(c + 1);
-            if (solve(l) == true) {
+            RushOurState leste = new RushOurState(state);
+            leste.set(linha, coluna, 3, 3);
+            leste.setColuna(coluna + 1);
+            if (solve(leste) == true) {
                 return true;
             }
         }
@@ -78,7 +78,7 @@ public class RushOurSolver {
         long start = System.currentTimeMillis();
         RushOurState first = new RushOurState();
         solve(first);
-        System.out.println("count: " + count);
-        System.out.println("time : " + (System.currentTimeMillis() - start) / 1000.0 + " s");
+        System.out.println("Contador: " + contador);
+        System.out.println("Tempo: " + (System.currentTimeMillis() - start) / 1000.0 + " s");
     }
 }
