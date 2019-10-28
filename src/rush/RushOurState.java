@@ -43,9 +43,14 @@ public class RushOurState {
         return this.coluna;
     }
 
-    public void set(int linha, int coluna, int v1, int v2) {
+    public void setNorteSul(int linha, int coluna, int v1, int v2) {
         this.matriz[linha][coluna] = v1;
-        this.matriz[linha + 1][coluna + 1] = v2;
+        this.matriz[linha + 1][coluna] = v2;
+    }
+
+    public void setLesteOeste(int linha, int coluna, int v1, int v2) {
+        this.matriz[linha][coluna] = v1;
+        this.matriz[linha][coluna + 1] = v2;
     }
 
     public void setLinha(int linha) {
