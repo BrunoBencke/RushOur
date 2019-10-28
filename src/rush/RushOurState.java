@@ -12,17 +12,19 @@ public class RushOurState {
         {1, 1, 1, 1, 1, 1, 1, 1}, // labirinto zerado
         {1, 3, 0, 0, 0, 0, 0, 1},
         {1, 0, 0, 0, 0, 0, 0, 1},
-        {1, 0, 0, 2, 0, 0, 0, 1},
-        {1, 4, 0, 0, 0, 0, 0, 1},
+        {1, 0, 0, 2, 0, 0, 0, 4},
+        {1, 2, 0, 0, 0, 0, 0, 1},
+        {1, 0, 0, 0, 3, 0, 0, 1},
+        {1, 0, 0, 0, 0, 0, 0, 1},
         {1, 1, 1, 1, 1, 1, 1, 1}};
 
-    private int linha = 1, coluna = 1; // posição inicial
+    private int linha = 4, coluna = 1; // posição inicial
 
     public RushOurState() {
     }
 
     public RushOurState(RushOurState state) {
-        for (int linha = 0; linha < 6; linha++) {
+        for (int linha = 0; linha < 8; linha++) {
             for (int coluna = 0; coluna < 8; coluna++) {
                 this.matriz[linha][coluna] = state.matriz[linha][coluna];
             }
@@ -43,12 +45,22 @@ public class RushOurState {
         return this.coluna;
     }
 
-    public void setNorteSul(int linha, int coluna, int v1, int v2) {
+    public void setCima(int linha, int coluna, int v1, int v2) {
+        this.matriz[linha][coluna] = v1;
+        this.matriz[linha -1][coluna] = v2;
+    }
+
+    public void setBaixo(int linha, int coluna, int v1, int v2) {
         this.matriz[linha][coluna] = v1;
         this.matriz[linha + 1][coluna] = v2;
     }
 
-    public void setLesteOeste(int linha, int coluna, int v1, int v2) {
+    public void setEsquerda(int linha, int coluna, int v1, int v2) {
+        this.matriz[linha][coluna] = v1;
+        this.matriz[linha][coluna - 1] = v2;
+    }
+
+    public void setDireita(int linha, int coluna, int v1, int v2) {
         this.matriz[linha][coluna] = v1;
         this.matriz[linha][coluna + 1] = v2;
     }
@@ -63,7 +75,7 @@ public class RushOurState {
 
     public String toString() {
         String s = "";
-        for (int linha = 0; linha < 6; linha++) {
+        for (int linha = 0; linha < 8; linha++) {
             for (int coluna = 0; coluna < 8; coluna++) {
                 s += this.matriz[linha][coluna];
             }

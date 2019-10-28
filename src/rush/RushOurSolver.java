@@ -28,59 +28,79 @@ public class RushOurSolver {
         int coluna = state.getColuna();
 
         while (true) {
-            System.out.println("ENTRANDO NO WHILE: "+state.get(linha, coluna));
-            if (state.get(linha, coluna) == 4) { // saída encontrada
+            System.out.println("ENTRANDO NO WHILE COM O VEICULO: " + state.get(linha, coluna));
+
+            // baseado no estado parcial atual, gera novos estados
+            if (state.get(linha, coluna) == 3) { //verifica se é carro 3, se for entra no outro if
+                if (state.get(linha - 1, coluna) == 0 && state.get(linha - 1, coluna) != 1) { //verifica se tem espaço vazio para cima e se não é parede
+                    // existe caminho não explorado para cima
+                    System.out.println("O QUE TEM EM CIMA: " + state.get(linha - 1, coluna));
+                    RushOurState cima = new RushOurState(state);
+                    cima.setCima(linha, coluna, liberaCampo, 3);
+                    //cima.setLinha(linha - 1);
+                    if (solve(cima) == true) {
+                        return true;
+                    }
+                } else {
+                    System.out.println("PRA CIMA NÃO DÁ");
+                }
+            } else if (state.get(linha - 1, coluna) == 4) { //saida encontrada
                 System.out.println("SAÍDA ENCONTRADA!");
                 return true;
             }
 
-            // baseado no estado parcial atual, gera novos estados
             if (state.get(linha, coluna) == 3) { //verifica se é carro 3, se for entra no outro if
-                if (state.get(linha - 1, coluna) == 0 && state.get(linha - 1, coluna) != 1) { //verifica se tem espaço vazio ao norte, se é saída e se não é parede
-                    // existe caminho não explorado ao norte
-                    RushOurState norte = new RushOurState(state);
-                    norte.setNorteSul(linha, coluna, liberaCampo, 3);
-                    norte.setLinha(linha - 1);
-                    if (solve(norte) == true) {
+                if (state.get(linha + 1, coluna) == 0 && state.get(linha + 1, coluna) != 1) { //verifica se tem espaço vazio para baixo e se não é parede
+                    // existe caminho não explorado para baixo
+                    System.out.println("O QUE TEM EM BAIXO: " + state.get(linha + 1, coluna));
+                    RushOurState baixo = new RushOurState(state);
+                    baixo.setBaixo(linha, coluna, liberaCampo, 3);
+                    //baixo.setLinha(linha + 1);
+                    if (solve(baixo) == true) {
                         return true;
                     }
+                } else {
+                    System.out.println("PRA BAIXO NÃO DÁ");
                 }
-            }
-
-            if (state.get(linha, coluna) == 3) { //verifica se é carro 3, se for entra no outro if
-                if (state.get(linha + 1, coluna) == 0 && state.get(linha + 1, coluna) != 1) { //verifica se tem espaço vazio ao sul, se é saída e se não é parede
-                    // existe caminho não explorado ao sul 
-                    RushOurState sul = new RushOurState(state);
-                    sul.setNorteSul(linha, coluna, liberaCampo, 3);
-                    sul.setLinha(linha + 1);
-                    if (solve(sul) == true) {
-                        return true;
-                    }
-                }
-            }
-            
-            if (state.get(linha, coluna) == 2) { //verifica se é carro 2, se for entra no outro if
-                if (state.get(linha, coluna - 1) == 0 && state.get(linha, coluna - 1) != 1) { //verifica se tem espaço vazio ao oeste, se é saída e se não é parede
-                    // existe caminho não explorado a oeste
-                    RushOurState oeste = new RushOurState(state);
-                    oeste.setLesteOeste(linha, coluna, liberaCampo, 2);
-                    oeste.setColuna(coluna - 1);
-                    if (solve(oeste) == true) {
-                        return true;
-                    }
-                }
+            } else if (state.get(linha + 1, coluna) == 4) { //saida encontrada
+                System.out.println("SAÍDA ENCONTRADA!");
+                return true;
             }
 
             if (state.get(linha, coluna) == 2) { //verifica se é carro 2, se for entra no outro if
-                if (state.get(linha, coluna + 1) == 0 && state.get(linha, coluna + 1) != 1) { //verifica se tem espaço vazio ao leste, se é saída e se não é parede
-                    // existe caminho não explorado a leste
-                    RushOurState leste = new RushOurState(state);
-                    leste.setLesteOeste(linha, coluna, liberaCampo, 2);
-                    leste.setColuna(coluna + 1);
-                    if (solve(leste) == true) {
+                if (state.get(linha, coluna - 1) == 0 && state.get(linha, coluna - 1) != 1) { //verifica se tem espaço vazio para esquerda e se não é parede
+                    // existe caminho não explorado para esquerda
+                    System.out.println("O QUE TEM NA ESQUERDA: " + state.get(linha, coluna - 1));
+                    RushOurState esquerda = new RushOurState(state);
+                    esquerda.setEsquerda(linha, coluna, liberaCampo, 2);
+                    //esquerda.setColuna(coluna - 1);
+                    if (solve(esquerda) == true) {
                         return true;
                     }
+                } else {
+                    System.out.println("PRA ESQUERDA NÃO DÁ");
                 }
+            } else if (state.get(linha - 1, coluna) == 4) { //saida encontrada
+                System.out.println("SAÍDA ENCONTRADA!");
+                return true;
+            }
+
+            if (state.get(linha, coluna) == 2) { //verifica se é carro 2, se for entra no outro if
+                if (state.get(linha, coluna + 1) == 0 && state.get(linha, coluna + 1) != 1) { //verifica se tem espaço vazio para direita e se não é parede
+                    // existe caminho não explorado para direita
+                    System.out.println("O QUE TEM NA DIREITA: " + state.get(linha, coluna + 1));
+                    RushOurState direita = new RushOurState(state);
+                    direita.setDireita(linha, coluna, liberaCampo, 2);
+                    //direita.setColuna(coluna + 1);
+                    if (solve(direita) == true) {
+                        return true;
+                    }
+                } else {
+                    System.out.println("PRA DIREITA NÃO DÁ");
+                }
+            } else if (state.get(linha + 1, coluna) == 4) { //saida encontrada
+                System.out.println("SAÍDA ENCONTRADA!");
+                return true;
             }
             return false; // tudo mais falhou, retorne falso
         }
