@@ -16,7 +16,7 @@ public class RushOurState {
         {1, 4, 0, 0, 0, 0, 0, 1},
         {1, 1, 1, 1, 1, 1, 1, 1}};
 
-    private int linha = 2, coluna = 2; // posição inicial
+    private int linha = 1, coluna = 1; // posição inicial
 
     public RushOurState() {
     }
