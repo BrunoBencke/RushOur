@@ -9,23 +9,20 @@ public class RushOurState {
     E se encontrar a saída if(espaço == 4) para o programa;
      */
     private int[][] matriz = {
-        {1, 1, 1, 1, 1, 1, 1, 1}, // labirinto zerado
-        {1, 3, 0, 0, 0, 0, 0, 1},
-        {1, 0, 0, 0, 0, 0, 0, 1},
-        {1, 0, 0, 2, 0, 0, 0, 4},
-        {1, 2, 0, 0, 0, 0, 0, 1},
-        {1, 0, 0, 0, 3, 0, 0, 1},
-        {1, 0, 0, 0, 0, 0, 0, 1},
-        {1, 1, 1, 1, 1, 1, 1, 1}};
+        {1, 1, 1, 1, 1,}, // labirinto zerado
+        {1, 0, 5, 0, 1,},
+        {1, 2, 3, 3, 4,},
+        {1, 0, 5, 0, 1,},
+        {1, 1, 1, 1, 1,}};
 
-    private int linha = 4, coluna = 1; // posição inicial
+    private int linha = 1, coluna = 2; // posição inicial
 
     public RushOurState() {
     }
-
+    
     public RushOurState(RushOurState state) {
-        for (int linha = 0; linha < 8; linha++) {
-            for (int coluna = 0; coluna < 8; coluna++) {
+        for (int linha = 0; linha < 5; linha++) {
+            for (int coluna = 0; coluna < 5; coluna++) {
                 this.matriz[linha][coluna] = state.matriz[linha][coluna];
             }
         }
@@ -75,8 +72,8 @@ public class RushOurState {
 
     public String toString() {
         String s = "";
-        for (int linha = 0; linha < 8; linha++) {
-            for (int coluna = 0; coluna < 8; coluna++) {
+        for (int linha = 0; linha < 5; linha++) {
+            for (int coluna = 0; coluna < 5; coluna++) {
                 s += this.matriz[linha][coluna];
             }
             s += '\n';
