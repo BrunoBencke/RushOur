@@ -1,4 +1,5 @@
 package novo;
+import java.util.ArrayList;
 
 /**
  *
@@ -8,6 +9,7 @@ public class Solver {
     
     // contador de estados gerados
     public static int count = 0;
+    public static ArrayList<Veiculo> veiculos = new ArrayList();
     
     public static boolean solve(State state)
     {
@@ -68,10 +70,10 @@ public class Solver {
     {
         long start = System.currentTimeMillis();
         State first = new State();
-        first.adicionarVeiculo(new Veiculo(2,2,1,"vertical"));
-        first.adicionarVeiculo(new Veiculo(5,1,2,"horizontal"));
-        first.adicionarVeiculo(new Veiculo(3,2,3,"vertical"));
-        first.toString();
+        veiculos.add(new Veiculo(2,2,1,"vertical"));
+        veiculos.add(new Veiculo(5,1,2,"horizontal"));
+        veiculos.add(new Veiculo(3,2,3,"vertical"));
+        first.adicionarVeiculos(veiculos);
         solve(first);
         System.out.println("count: " + count);
         System.out.println("time : " + (System.currentTimeMillis()-start)/1000.0 + " s");
