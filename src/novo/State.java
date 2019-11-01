@@ -9,11 +9,11 @@ import java.util.ArrayList;
 public class State {
 
     private int[][] matriz = {{1, 1, 1, 1, 1, 1}, // labirinto zerado
-    {1, 0, 0, 0, 0, 1},
-    {1, 0, 0, 0, 4, 1},
-    {1, 0, 0, 0, 0, 1},
-    {1, 0, 0, 0, 0, 1},
-    {1, 1, 1, 1, 1, 1}};
+                            {1, 0, 5, 0, 0, 1},
+                            {1, 2, 0, 3, 4, 1},
+                            {1, 0, 0, 0, 0, 1},
+                            {1, 0, 0, 0, 0, 1},
+                            {1, 1, 1, 1, 1, 1}};
 
     private int linha = 1, coluna = 1; // posição inicial
 
