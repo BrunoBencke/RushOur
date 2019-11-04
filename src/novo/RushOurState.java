@@ -1,25 +1,25 @@
-package rush;
+package novo;
 
 public class RushOurState {
 
     /*
-    Temos que mover o carro 3 apenas para cima e para baixo (norte e sul);
-    Temos que mover o carro 2 apenas para o lado esquerdo e direito (leste e oeste);
-    Apenas movimentar, se (if (espaço == 0)), se for vazio, ai ele anda, se nao, procura outro lugar (retrocede);
-    E se encontrar a saída if(espaço == 4) para o programa;
+     Temos que mover o carro 3 apenas para cima e para baixo (norte e sul);
+     Temos que mover o carro 2 apenas para o lado esquerdo e direito (leste e oeste);
+     Apenas movimentar, se (if (espaço == 0)), se for vazio, ai ele anda, se nao, procura outro lugar (retrocede);
+     E se encontrar a saída if(espaço == 4) para o programa;
      */
-    private int[][] matriz = {
+    int[][] matriz = {
         {1, 1, 1, 1, 1,}, // labirinto zerado
-        {1, 0, 5, 0, 1,},
-        {1, 2, 3, 3, 4,},
-        {1, 0, 5, 0, 1,},
+        {1, 0, 2, 0, 1,},
+        {1, 5, 0, 3, 4,},
+        {1, 0, 2, 0, 1,},
         {1, 1, 1, 1, 1,}};
 
-    private int linha = 1, coluna = 2; // posição inicial
+    private int linha, coluna; // posição inicial
 
     public RushOurState() {
     }
-    
+
     public RushOurState(RushOurState state) {
         for (int linha = 0; linha < 5; linha++) {
             for (int coluna = 0; coluna < 5; coluna++) {
@@ -44,7 +44,7 @@ public class RushOurState {
 
     public void setCima(int linha, int coluna, int v1, int v2) {
         this.matriz[linha][coluna] = v1;
-        this.matriz[linha -1][coluna] = v2;
+        this.matriz[linha - 1][coluna] = v2;
     }
 
     public void setBaixo(int linha, int coluna, int v1, int v2) {
