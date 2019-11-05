@@ -11,8 +11,8 @@ public class RushOurState {
     int[][] matriz = {
         {1, 1, 1, 1, 1,}, // labirinto zerado
         {1, 0, 2, 0, 1,},
-        {1, 5, 0, 3, 4,},
-        {1, 0, 2, 0, 1,},
+        {1, 6, 0, 3, 4,},
+        {1, 0, 5, 0, 1,},
         {1, 1, 1, 1, 1,}};
 
     private int linha, coluna; // posição inicial
